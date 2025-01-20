@@ -18,7 +18,10 @@ struct ContentView: View {
         ["📱","0",".","="]
     ]
     
+    private let grayColor: [String] = ["AC","+/-","%"]
+    private let orangeColor: [String] = ["÷","X","-","+","="]
     
+
     
     
     var body: some View {
@@ -40,7 +43,14 @@ struct ContentView: View {
                     HStack{
                         ForEach(row,id: \.self){ column in
                             HStack{
-                                CalculatorButton(number: column, bgColor: Color(hex: "5c5c5f"))
+                                if grayColor.contains(column){
+                                    CalculatorButton(number: column, bgColor: Color("gray"))
+                                } else if orangeColor.contains(column){
+                                    CalculatorButton(number: column, bgColor: Color("orange"))
+                                } else {
+                                    CalculatorButton(number: column, bgColor: Color("darkgray"))
+                                }
+                            
                             }
                         }
                     }.padding(.bottom, 5)
