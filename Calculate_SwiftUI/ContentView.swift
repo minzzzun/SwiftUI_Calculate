@@ -10,75 +10,46 @@ import SwiftUI
 struct ContentView: View {
     @State var number : String
     
+    private let buttonData: [[String]] = [
+        ["AC","+/-","%","÷"],
+        ["7","8","9","X"],
+        ["4","5","6","-"],
+        ["1","2","3","+"],
+        ["📱","0",".","="]
+    ]
+    
+    
+    
+    
     var body: some View {
         
         ZStack{
             Color.black.ignoresSafeArea()
-                
+            
             VStack{
                 Spacer()
-                    
                 HStack(){
                     Spacer()
-                        
-                
                     Text("\(number)")
                         .padding()
                         .font(.system(size:73))
                         .foregroundColor(Color.white)
-                        
-                    
+                }// h
+                
+                ForEach(buttonData, id: \.self){ row in
+                    HStack{
+                        ForEach(row,id: \.self){ column in
+                            HStack{
+                                CalculatorButton(number: column, bgColor: Color(hex: "5c5c5f"))
+                            }
+                        }
+                    }.padding(.bottom, 5)
                 }
                 
-                
-                HStack{
-                    CalculatorButton(number: "AC", bgColor: Color(hex: "5c5c5f"))
-                    CalculatorButton(number: "+/-", bgColor: Color(hex: "5c5c5f"))
-                    CalculatorButton(number: "%", bgColor: Color(hex: "5c5c5f"))
-                    CalculatorButton(number:  "÷", bgColor: Color(hex:"ff9f0a"))
-                }
-                .padding(.bottom, 5)
-                
-                HStack{
-                    CalculatorButton(number: "7", bgColor: Color(hex: "2a2a2c"))
-                    CalculatorButton(number: "8", bgColor: Color(hex: "2a2a2c"))
-                    CalculatorButton(number: "9", bgColor: Color(hex: "2a2a2c"))
-                    CalculatorButton(number:  "X", bgColor: Color(hex:"ff9f0a"))
-                }
-                .padding(.bottom, 5)
-                
-                HStack{
-                    CalculatorButton(number: "4", bgColor: Color(hex: "2a2a2c"))
-                    CalculatorButton(number: "5", bgColor: Color(hex: "2a2a2c"))
-                    CalculatorButton(number: "6", bgColor: Color(hex: "2a2a2c"))
-                    CalculatorButton(number:  "-", bgColor: Color(hex:"ff9f0a"))
-                }
-                .padding(.bottom, 5)
-                
-                HStack{
-                    CalculatorButton(number: "1", bgColor: Color(hex: "2a2a2c"))
-                    CalculatorButton(number: "2", bgColor: Color(hex: "2a2a2c"))
-                    CalculatorButton(number: "3", bgColor: Color(hex: "2a2a2c"))
-                    CalculatorButton(number:  "+", bgColor: Color(hex:"ff9f0a"))
-                }
-                .padding(.bottom, 5)
-                
-                HStack{
-                    CalculatorButton(number: "📱", bgColor: Color(hex: "2a2a2c"))
-                    CalculatorButton(number: "0", bgColor: Color(hex: "2a2a2c"))
-                    CalculatorButton(number: ".", bgColor: Color(hex: "2a2a2c"))
-                    CalculatorButton(number:  "=", bgColor: Color(hex:"ff9f0a"))
-                }
-                .padding(.bottom, 5)
-                
-                
-                
-                
-                
-            }
+            } // v
             
-        }
-      
+        } // z
+        
     }
 }
 
