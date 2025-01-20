@@ -8,26 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var number : Int
+    @State var number : String
     
     var body: some View {
         
         ZStack{
-            Color.black
-                .edgesIgnoringSafeArea(.all)
+            Color.black.ignoresSafeArea()
+                
             VStack{
                 Spacer()
                     
                 HStack(){
                     Spacer()
-                        .frame(width: 330)
-                    
-                    
+                        
+                
                     Text("\(number)")
-                        .font(.system(size:60))
+                        .padding()
+                        .font(.system(size:73))
                         .foregroundColor(Color.white)
                         
-                    Spacer()
+                    
                 }
                 
                 
@@ -83,5 +83,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(number: 0)
+    ContentView(number: "0")
 }
