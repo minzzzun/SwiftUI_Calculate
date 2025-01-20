@@ -6,11 +6,16 @@ import SwiftUI
 struct CalculatorButton : View {
     @State var number : String
     @State var bgColor : Color
+    let action: (String) -> Void
+    
+    
+    
     
     var body: some View {
         Button( action: {
             print("\(number)클릭함")
-            
+        
+            action(number)
         }
         
         ){
@@ -25,6 +30,6 @@ struct CalculatorButton : View {
 }
 
 
-#Preview {
-    CalculatorButton(number: "1", bgColor: Color.gray)
-}
+//#Preview {
+//    CalculatorButton(number: "1", bgColor: Color.gray,action: "1")
+//}

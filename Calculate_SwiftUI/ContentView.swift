@@ -21,7 +21,7 @@ struct ContentView: View {
     private let grayColor: [String] = ["AC","+/-","%"]
     private let orangeColor: [String] = ["÷","X","-","+","="]
     
-
+    
     
     
     var body: some View {
@@ -44,13 +44,28 @@ struct ContentView: View {
                         ForEach(row,id: \.self){ column in
                             HStack{
                                 if grayColor.contains(column){
-                                    CalculatorButton(number: column, bgColor: Color("gray"))
+                                    CalculatorButton(
+                                        number: column,
+                                        bgColor: Color("gray"),
+                                        action: { value in
+                                            number += value
+                                        })
                                 } else if orangeColor.contains(column){
-                                    CalculatorButton(number: column, bgColor: Color("orange"))
+                                    CalculatorButton(
+                                        number: column,
+                                        bgColor: Color("orange"),
+                                        action: { value in
+                                            number += value
+                                        })
                                 } else {
-                                    CalculatorButton(number: column, bgColor: Color("darkgray"))
+                                    CalculatorButton(
+                                        number: column,
+                                        bgColor: Color("darkgray"),
+                                        action: { value in
+                                            number += value
+                                        })
                                 }
-                            
+                                
                             }
                         }
                     }.padding(.bottom, 5)
