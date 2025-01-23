@@ -14,7 +14,7 @@ struct CalculatorButton : View {
     var body: some View {
         Button( action: {
             print("\(number)클릭함")
-        
+            
             action(number)
         }
         

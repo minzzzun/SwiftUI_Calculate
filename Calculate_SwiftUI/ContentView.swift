@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State var number : String
+    @StateObject private var viewModel = CalculatorViewModel()
+    
     
     private let buttonData: [[String]] = [
         ["AC","+/-","%","÷"],
@@ -21,7 +23,7 @@ struct ContentView: View {
     private let grayColor: [String] = ["AC","+/-","%"]
     private let orangeColor: [String] = ["÷","X","-","+","="]
     
-    
+    let numbers = ["1","2","3","4","5","6","7","8","9","0","."]
     
     
     var body: some View {
@@ -33,7 +35,7 @@ struct ContentView: View {
                 Spacer()
                 HStack(){
                     Spacer()
-                    Text("\(number)")
+                    Text(viewModel.displayNumber)
                         .padding()
                         .font(.system(size:73))
                         .foregroundColor(Color.white)
@@ -47,22 +49,20 @@ struct ContentView: View {
                                     CalculatorButton(
                                         number: column,
                                         bgColor: Color("gray"),
-                                        action: { value in
-                                            number += value
-                                        })
+                                        action: { _ in viewModel.performOperation(column)})
                                 } else if orangeColor.contains(column){
                                     CalculatorButton(
                                         number: column,
                                         bgColor: Color("orange"),
-                                        action: { value in
-                                            number += value
-                                        })
+                                        action: { _ in viewModel.performOperation(column) })
                                 } else {
                                     CalculatorButton(
                                         number: column,
                                         bgColor: Color("darkgray"),
-                                        action: { value in
-                                            number += value
+                                        action: { _ in
+                                            if numbers.contains(column){
+                                                viewModel.inputNumber(column)
+                                            }
                                         })
                                 }
                                 
