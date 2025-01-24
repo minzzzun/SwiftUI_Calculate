@@ -13,8 +13,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Select Xcode 16.2
+      run: sudo xcode-select -switch /Applications/Xcode_16.2.app
+
     - name: Show Xcode version
-      run: xcodebuild -version  # 현재 Xcode 버전 확인
+      run: xcodebuild -version  # 현재 Xcode 버전 확인 (Xcode 16.2가 나와야 함)
 
     - name: List available simulators
       run: xcrun simctl list  # 사용 가능한 시뮬레이터 목록 확인
