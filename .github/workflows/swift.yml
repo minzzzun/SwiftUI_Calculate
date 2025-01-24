@@ -16,8 +16,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build
-      run: swift build -v
     - name: Run tests
       run: xcodebuild -scheme "Calculate_SwiftUI" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14' build
 
