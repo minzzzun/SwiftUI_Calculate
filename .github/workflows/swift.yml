@@ -15,6 +15,9 @@ jobs:
 
     - name: Select Xcode 16.2
       run: sudo xcode-select -switch /Applications/Xcode_16.2.app
+      
+    - name: List available simulators
+      run: xcrun simctl list  
 
     - name: Build Xcode project
       run: xcodebuild -scheme "Calculate_SwiftUI" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' build
