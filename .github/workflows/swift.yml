@@ -15,6 +15,9 @@ jobs:
 
     - name: Select Xcode 16.2
       run: sudo xcode-select -switch /Applications/Xcode_16.2.app
+   
+    - name: Show Xcode version
+      run: xcodebuild -version  # 현재 Xcode 버전 확인
       
     - name: List available simulators
       run: xcrun simctl list  
