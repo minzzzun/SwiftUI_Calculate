@@ -13,14 +13,17 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Select Xcode 16.2
-      run: sudo xcode-select -switch /Applications/Xcode_16.2.app
-   
     - name: Show Xcode version
       run: xcodebuild -version  # 현재 Xcode 버전 확인
-      
+
     - name: List available simulators
-      run: xcrun simctl list  
+      run: xcrun simctl list  # 사용 가능한 시뮬레이터 목록 확인
+
+    - name: Boot iOS Simulator (iPhone 15)
+      run: xcrun simctl boot "iPhone 15"
+
+    - name: Wait for simulator to fully boot
+      run: sleep 10  # 부팅 완료될 때까지 잠시 대기
 
     - name: Build Xcode project
       run: xcodebuild -scheme "Calculate_SwiftUI" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5' build
